@@ -9,9 +9,8 @@ export default {
         };
     },
     methods: {
-        fetchProjects() {
-            let url = "http://127.0.0.1:8000/api/projects";
-            axios.get(url).then((response) => {
+        fetchProjects(url) {
+            axios.get(url ?? "http://127.0.0.1:8000/api/projects").then((response) => {
                 this.projects = response.data.results.data; // salvo la lista dei progetti
 
                 // Salvo i dati della paginazione
@@ -59,6 +58,11 @@ export default {
                     </div>
                 </div>
             </div>
+        </div>
+        <!-- Paginazione -->
+        <div class="pt-3">
+            <a class="btn btn-primary m-1" @click="fetchProjects(linkPage.url)" role="button" v-for="linkPage in pagination.links"
+                v-html="linkPage.label"></a>
         </div>
     </main>
 </template>

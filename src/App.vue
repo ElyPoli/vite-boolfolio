@@ -1,7 +1,11 @@
 <script>
 import axios from 'axios';
+import ProjectCard from "./components/ProjectCard.vue";
 
 export default {
+    components: {
+        ProjectCard
+    },
     data() {
         return {
             projects: [],
@@ -34,35 +38,13 @@ export default {
         <h1 class="pb-3">Lista progetti</h1>
         <div class="row row-cols-2 row-cols-md-4 gy-3">
             <div class="col" v-for="project in projects" :key="project.id">
-                <div class="card">
-                    <img :src="getProjectThumbnail(project)" class="card-img-top" :alt="project.title">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ project.title }}</h5>
-                        <p class="card-text">{{ project.description }}</p>
-                        <p class="card-text" v-if="project.type">{{ project.type.name }}</p>
-                        <div v-if="project.technologies && project.technologies.length > 0">
-                            <p class="card-text">Strumenti utilizzati:</p>
-                            <ul>
-                                <li v-for="technology in project.technologies" :key="technology.id">{{ technology.name }}
-                                </li>
-                            </ul>
-                        </div>
-                        <ul class="card-text">
-                            <li>
-                                <a :href="project.repository_link">Guarda la repository</a>
-                            </li>
-                            <li>
-                                <a :href="project.url">Guarda il sito online</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <ProjectCard :project="project" :image-url="getProjectThumbnail"></ProjectCard>
             </div>
         </div>
         <!-- Paginazione -->
         <div class="pt-3">
-            <a class="btn btn-primary m-1" @click="fetchProjects(linkPage.url)" role="button" v-for="linkPage in pagination.links"
-                v-html="linkPage.label"></a>
+            <a class="btn btn-primary m-1" @click="fetchProjects(linkPage.url)" role="button"
+                v-for="linkPage in pagination.links" v-html="linkPage.label"></a>
         </div>
     </main>
 </template>

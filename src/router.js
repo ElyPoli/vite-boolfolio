@@ -17,20 +17,21 @@ const routes = [
     name: "projects", // nome della rotta da usare per creare un link
     component: Projects, // componente che ritorna l'html della pagina
   },
+  // Rotta per la pagina esterna di login
+  {
+    path: "/login", // uri che sarà scritto nel browser
+    name: "login", // nome della rotta da usare per creare un link
+    // Redirect alla pagina esterna
+    beforeEnter(to, from, next) {
+      window.location.href = "http://127.0.0.1:8000/login";
+    },
+  },
   // Rotta per lo show del singolo progetto
   {
     path: "/project-detail/:slug", // uri che sarà scritto nel browser
-    name: "project-detail", // nome della rotta da usare per creare un link
+    name: "project-detail.show", // nome della rotta da usare per creare un link
     component: ProjectDetail, // componente che ritorna l'html della pagina
   },
-
-  //   // ... altre rotte
-  //   {
-  //     // Show di un singolo post
-  //     path: "/posts/:id",
-  //     name: "posts.show",
-  //     component: PostsShowPage,
-  //   },
 ];
 
 // Creo un'istanza di Router

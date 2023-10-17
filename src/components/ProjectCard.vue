@@ -14,6 +14,10 @@ export default {
             type: Function,
             required: true
         },
+        slug: {
+            type: String,
+            required: true
+        }
     }
 }
 </script>
@@ -45,6 +49,11 @@ export default {
                 </li>
             </ul>
         </div>
+        <!-- Pulsante per visualizzare un progetto  -->
+        <router-link class="btn btn-outline-primary btn-icons me-2" role="button"
+            :to="{ name: 'project-detail.show', params: { slug: slug } }">
+            <i class="fa-solid fa-expand"></i>
+        </router-link>
     </div>
 </template>
 

@@ -24,7 +24,6 @@ export default {
         <div class="card-body d-flex flex-column justify-content-between">
             <h5 class="card-title">{{ project.title.charAt(0).toUpperCase() + project.title.slice(1) }}</h5>
             <p class="card-text">{{ project.description }}</p>
-            <p class="card-text" v-if="project.type">{{ project.type.name }}</p>
             <div class="my-types-badge mb-2" v-if="project.type" :style="{ backgroundColor: project.type.color }">
                 <p class="card-text">{{ project.type.name }}</p>
             </div>

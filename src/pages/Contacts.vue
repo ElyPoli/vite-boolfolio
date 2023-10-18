@@ -21,7 +21,7 @@ export default {
                     this.formError = null;
                 })
                 .catch(e => {
-                    this.formError = e.message;
+                    this.formError = e.response?.data?.message ?? e.message;
                 });
         }
     }
@@ -45,7 +45,7 @@ export default {
             </div>
             <div class="mb-3">
                 <label class="form-label">Testo</label>
-                <input type="text" class="form-control" v-model="dataForm.text">
+                <textarea class="form-control" v-model="dataForm.text"></textarea>
             </div>
             <button type="submit" class="btn btn-outline-primary">Invia</button>
         </form>

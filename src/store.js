@@ -10,6 +10,10 @@ export const store = reactive({
         {
             title: "Lista progetti",
             route: "projects",
+        },
+        {
+            title: "Contatti",
+            route: "contacts",
         }
     ],
     projects: [],

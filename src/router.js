@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 // Importo le singole pagine
 import Home from "./pages/Home.vue";
 import Projects from "./pages/Projects.vue";
+import Contacts from "./pages/Contacts.vue";
 import ProjectDetail from "./pages/ProjectDetail.vue";
 
 // Definisco tutte le rotte
@@ -16,6 +17,11 @@ const routes = [
     path: "/projects", // uri che sarà scritto nel browser
     name: "projects", // nome della rotta da usare per creare un link
     component: Projects, // componente che ritorna l'html della pagina
+  },
+  {
+    path: "/contacts", // uri che sarà scritto nel browser
+    name: "contacts", // nome della rotta da usare per creare un link
+    component: Contacts, // componente che ritorna l'html della pagina
   },
   // Rotta per la pagina esterna di login
   {

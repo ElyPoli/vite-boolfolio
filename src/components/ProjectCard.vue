@@ -1,30 +1,28 @@
 <script>
+import { store, getProjectThumbnail, getIcon } from "../store.js";
 
 export default {
     props: {
         project: {
             type: Object,
             required: true
-        },
-        imageUrl: {
-            type: Function,
-            required: true
-        },
-        iconUrl: {
-            type: Function,
-            required: true
-        },
-        slug: {
-            type: String,
-            required: true
         }
+    },
+    data() {
+        return {
+            store,
+        }
+    },
+    methods: {
+        getProjectThumbnail,
+        getIcon,
     }
 }
 </script>
 
 <template>
     <div class="card projects-card">
-        <img :src="imageUrl(project)" class="card-img-top" :alt="project.title">
+        <img :src="getProjectThumbnail(project)" class="card-img-top" :alt="project.title">
         <div class="card-body d-flex flex-column justify-content-between">
             <h5 class="card-title">{{ project.title.charAt(0).toUpperCase() + project.title.slice(1) }}</h5>
             <p class="card-text">{{ project.description }}</p>
@@ -36,7 +34,7 @@ export default {
                 <ul>
                     <li v-for="technology in project.technologies" :key="technology.id">
                         {{ technology.name }}
-                        <img class="my-card-icon" :src="iconUrl(technology.icon)" alt="{{ technology.name }}">
+                        <img class="my-card-icon" :src="getIcon(technology.icon)" alt="{{ technology.name }}">
                     </li>
                 </ul>
             </div>
@@ -51,7 +49,7 @@ export default {
         </div>
         <!-- Pulsante per visualizzare un progetto  -->
         <router-link class="btn btn-outline-primary btn-icons me-2" role="button"
-            :to="{ name: 'project-detail.show', params: { slug: slug } }">
+            :to="{ name: 'project-detail.show', params: { slug: project.slug } }">
             <i class="fa-solid fa-expand"></i>
         </router-link>
     </div>

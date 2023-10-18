@@ -1,18 +1,11 @@
 <script>
+import { store } from "../store.js";
+
 export default {
     data() {
         return {
-            navLinks: [
-                {
-                    title: "Home",
-                    route: "home",
-                },
-                {
-                    title: "Lista progetti",
-                    route: "projects",
-                }
-            ],
-        };
+            store,
+        }
     },
 }
 </script>
@@ -32,7 +25,7 @@ export default {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
                         <!-- Link delle pagine -->
-                        <li class="nav-item" v-for="link in navLinks">
+                        <li class="nav-item" v-for="link in store.menuLinks">
                             <router-link class="nav-link" :class="{ 'active': $route.name === link.route }"
                                 :to="{ name: link.route }">{{ link.title }}</router-link>
                         </li>

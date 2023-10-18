@@ -5,6 +5,7 @@ import Home from "./pages/Home.vue";
 import Projects from "./pages/Projects.vue";
 import Contacts from "./pages/Contacts.vue";
 import ProjectDetail from "./pages/ProjectDetail.vue";
+import NotFound from "./pages/NotFound.vue";
 
 // Definisco tutte le rotte
 const routes = [
@@ -38,6 +39,12 @@ const routes = [
     name: "project-detail.show", // nome della rotta da usare per creare un link
     component: ProjectDetail, // componente che ritorna l'html della pagina
   },
+  // Rotta generica 404 (verrà utilizzata se l'url che scrive l'utente non corrisponde a nessuno previsto)
+  {
+    path: "/:pathMatch(.*)*", // uri che sarà scritto nel browser
+    name: "not-found", // nome della rotta da usare per creare un link
+    component: NotFound, // componente che ritorna l'html della pagina
+  }
 ];
 
 // Creo un'istanza di Router

@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import { getProjectThumbnail, getIcon } from "../store.js";
 
 export default {
     data() {
@@ -13,18 +14,17 @@ export default {
             let url = "http://127.0.0.1:8000/api/projects/";
 
             // Nella chiamata aggiungo all'url lo slug del singolo progetto
-            axios.get(url + this.$route.params.slug).then((response) => {
-                this.project = response.data;
-            });
+            axios
+                .get(url + this.$route.params.slug)
+                .then((response) => {
+                    this.project = response.data;
+                })
+                .catch((e) => {
+                    this.$router.push({ name: "not-found" });
+                });
         },
-        getProjectThumbnail(project) {
-            // Recupero dal backend l'immagine per ciascun post
-            return `http://127.0.0.1:8000/storage/${project.thumbnail}`;
-        },
-        getIcon(singleTecnology) {
-            // Recupero dal backend le icone
-            return `http://127.0.0.1:8000/storage/${singleTecnology}`;
-        }
+        getProjectThumbnail,
+        getIcon
     },
     mounted() {
         this.fetchSingleProject();

@@ -31,8 +31,10 @@ export default {
                         </li>
                     </ul>
                     <!-- Pulsante accedi -->
-                    <p class="nav-item m-0">
-                        <router-link class="nav-link" :to="{ name: 'login' }">Accedi</router-link>
+                    <p class="nav-item m-0 text-center">
+                        <router-link class="nav-link" :to="{ name: 'login' }">
+                            <i class="fa-regular fa-circle-user"></i>
+                        </router-link>
                     </p>
                 </div>
             </div>

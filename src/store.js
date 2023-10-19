@@ -17,7 +17,8 @@ export const store = reactive({
         }
     ],
     projects: [],
-    pagination: {}
+    pagination: {},
+    selectedProject: null,
 });
 
 /**
@@ -27,6 +28,8 @@ export const store = reactive({
 export function fetchProjects(url) {
     axios.get(url ?? "http://127.0.0.1:8000/api/projects").then((response) => {
         store.projects = response.data.results.data; // salvo la lista dei progetti
+
+        store.selectedProject = store.projects[0]; // imposto come selezionato il primo progetto
 
         // Salvo i dati della paginazione
         delete response.data.results.data;

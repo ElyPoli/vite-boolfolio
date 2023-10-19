@@ -24,8 +24,14 @@ export default {
                     <router-link class="nav-link" :class="{ 'active': $route.name === link.route }"
                         :to="{ name: link.route }">{{ link.title }}</router-link>
                 </li>
+                <!-- Pulsante accedi -->
+                <li class="nav-item m-0 text-center">
+                    <router-link class="nav-link" :to="{ name: 'login' }">
+                        <i class="fa-regular fa-circle-user"></i>
+                    </router-link>
+                </li>
             </ul>
-            <p class="text-center text-body-secondary">&copy; 2023</p>
+            <p class="text-center">&copy; 2023</p>
         </footer>
     </div>
 </template>

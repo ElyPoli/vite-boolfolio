@@ -31,9 +31,20 @@ export default {
             voluptatibus.
         </p>
 
-        <div class="row row-cols-1 row-cols-sm-2 gy-2 text-center">
+        <div class="row row-cols-1 row-cols-md-2 gy-2 text-center">
+
+            <!-- Sezione anteprima progetto -->
+            <div class="col-12 col-md-5">
+                <div class="my-project-preview-box">
+                    <ProjectPreview></ProjectPreview>
+                </div>
+            </div>
+
+            <!-- Colonna di margine -->
+            <div class="col-0 col-md-1"></div>
+
             <!-- Sezione miniature progetti -->
-            <div class="col-12 col-sm-6">
+            <div class="col-12 col-md-6 order-md-first">
                 <ProjectsList></ProjectsList>
 
                 <!-- Paginazione -->
@@ -44,15 +55,6 @@ export default {
                 </div>
             </div>
 
-            <!-- Colonna di margine -->
-            <div class="col-0 col-sm-1"></div>
-
-            <!-- Sezione anteprima progetto -->
-            <div class="col-12 col-sm-5">
-                <div class="my-project-preview-box">
-                    <ProjectPreview></ProjectPreview>
-                </div>
-            </div>
         </div>
     </div>
 </template>
@@ -71,7 +73,5 @@ export default {
     align-items: center;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 156, 144, 0.05);
-    box-shadow: inset 1px 1px 16px 0px rgba(0, 156, 144, 0.3);
 }
 </style>

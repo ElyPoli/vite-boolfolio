@@ -21,48 +21,12 @@ export default {
 </script>
 
 <template>
-    <!-- <div class="card projects-card">
-        <img :src="getProjectThumbnail(project)" class="card-img-top" :alt="project.title">
-        <div class="card-body d-flex flex-column justify-content-between">
-            <h5 class="card-title">{{ project.title.charAt(0).toUpperCase() + project.title.slice(1) }}</h5>
-            <p class="card-text">{{ project.description }}</p>
-            <div class="my-types-badge mb-2" v-if="project.type" :style="{ backgroundColor: project.type.color }">
-                <p class="card-text">{{ project.type.name }}</p>
-            </div>
-            <div v-if="project.technologies && project.technologies.length > 0">
-                <p class="card-text">Strumenti utilizzati:</p>
-                <ul>
-                    <li v-for="technology in project.technologies" :key="technology.id">
-                        {{ technology.name }}
-                        <img class="my-card-icon" :src="getIcon(technology.icon)" alt="{{ technology.name }}">
-                    </li>
-                </ul>
-            </div>
-            <ul class="card-text">
-                <li>
-                    <a :href="project.repository_link">Guarda la repository</a>
-                </li>
-                <li>
-                    <a :href="project.url">Guarda il sito online</a>
-                </li>
-            </ul>
-        </div> -->
-    <!-- Pulsante per visualizzare un progetto  -->
-    <!-- <router-link class="btn btn-outline-primary btn-icons me-2" role="button"
-            :to="{ name: 'project-detail.show', params: { slug: project.slug } }">
-            <i class="fa-solid fa-expand"></i>
-        </router-link>
-    </div> -->
-
-    <!-- <div class="my-project-card" style="background-color: purple;">
-        Progetto
-    </div> -->
-
     <div class="my-project-card d-flex justify-content-center align-items-center"
         :class="{ 'active': store.selectedProject && store.selectedProject.id === project.id }">
         <div>
+            <img class="project-img" :src="getProjectThumbnail(project)" :alt="project.title">
             <h5>{{ project.title.charAt(0).toUpperCase() + project.title.slice(1) }}</h5>
-            <div class="my-types-badge mb-2" v-if="project.type" :style="{ backgroundColor: project.type.color }">
+            <div class="my-types-badge mx-auto mb-2" v-if="project.type" :style="{ backgroundColor: project.type.color }">
                 <span class="m-0">{{ project.type.name }}</span>
             </div>
             <div v-if="project.technologies && project.technologies.length > 0">
@@ -81,17 +45,28 @@ export default {
 @use "../styles/partials/variables" as *;
 
 .my-project-card {
-    height: 200px;
-    background-color: $primary-color;
+    height: 150px;
+    background-color: rgba(144, 12, 63, 0.3);
     cursor: pointer;
     border-radius: 5px;
-
+    position: relative;
     margin: 1px;
     transition: all 0.3s;
 
     &:hover {
-        background-color: $secondary-color;
+        background-color: rgba(0, 156, 143, 0.4);
     }
+}
+
+.project-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+    border-radius: 5px;
 }
 
 .active {
@@ -114,36 +89,4 @@ p {
     height: 30px;
     width: 30px;
 }
-
-
-
-
-// .my-project-card {
-//     aspect-ratio: 1/1;
-//     width: 200px;
-//     height: 200px;
-// }
-
-
-
-// .projects-card {
-// --bs-card-title-color: #900c3f;
-// --bs-card-border-color: #900c3f;
-// transition: box-shadow 0.5s;
-// height: 100%;
-
-// &:hover {
-// box-shadow: 2px 4px 5px 0px rgba(144, 12, 63, 0.6);
-// }
-
-// .card-title {
-// text-align: center;
-// }
-
-// .card-img-top {
-// height: 250px;
-// object-fit: cover;
-// object-position: center;
-// }
-// }
 </style>
